@@ -35,13 +35,13 @@ Here are the steps to run the project locally.
 1. Clone the repository
 
    ```bash
-   git clone 
+   git clone https://github.com/samlam67812/SocialCool.git
    ```
 
 2. Install dependencies
 
    ```bash
-   cd 
+   cd SocialCool
    npm i
    ```
 
