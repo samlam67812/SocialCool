@@ -32,7 +32,7 @@ const MyPosts = () => {
   return (
     <>
       <Header>My Posts</Header>
-      { !posts && "You have not made any posts yet"}
+      { !!posts ? "You did not post any posts yet" : Null }
       <Item.Group>
         {posts.map((post) => {
           return <Post post={post} key={post.id} />;
