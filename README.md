@@ -24,8 +24,8 @@ SocialCool is a web application that provides a easy-to-use social media platfor
 
 ## Demo account 👦🏻
 ```javascript
-username: 
-password: 
+username: testing@gmail.com
+password: testing
 ```
 
 ## Development 💻
