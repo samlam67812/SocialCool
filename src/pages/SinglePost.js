@@ -66,24 +66,29 @@ const SinglePost = () => {
   const onSubmit = async () => {
     setIsLoading(true);
     const docRef = doc(firebase.db, "posts", postId);
-    batch.update(docRef, {
-      commentsCount: increment(1),
-    });
-    // comments is a subcollection of document posts
-    const commentRef = doc(collection(docRef, "comments"));
-    batch.set(commentRef, {
-      content: commentContent,
-      createAt: Timestamp.now(),
-      author: {
-        uid: auth.currentUser.uid || "",
-        displayName: auth.currentUser.displayName || "",
-        photoURL: auth.currentUser.photoURL || "",
-      },
-    });
-    batch.commit().then(() => {
-      setCommentContent("");
-      setIsLoading(false);
-    });
+    if (!auth.currentUser) {
+      window.alert("Please login before comment")
+    } else {
+      batch.update(docRef, {
+          commentsCount: increment(1),
+      });
+      // comments is a subcollection of document posts
+      const commentRef = doc(collection(docRef, "comments"));
+      batch.set(commentRef, {
+        content: commentContent,
+        createAt: Timestamp.now(),
+        author: {
+          uid: auth.currentUser.uid || "",
+          displayName: auth.currentUser.displayName || "",
+          photoURL: auth.currentUser.photoURL || "",
+        },
+      });
+      batch.commit().then(() => {
+        setCommentContent("");
+        setIsLoading(false);
+      });
+    }
+
   };
 
   return (
