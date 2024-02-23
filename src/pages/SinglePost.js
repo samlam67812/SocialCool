@@ -148,7 +148,7 @@ const SinglePost = () => {
             primary
             onClick={onSubmit}
             loading={isLoading}
-            disabled={!commentContent}
+            disabled={!commentContent && currentUser}
           >
             <Icon name="clipboard outline" />
             Add Comment
